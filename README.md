@@ -10,7 +10,7 @@
 - VR
 
 ## Hardware Requirements:
-Ocuus Quest 2 / 3 / 3s
+Oculus Quest 2 / 3 / 3s
 
 ## Target Audience:
 This game is designed for players who enjoy movement-heavy VR experiences. 
