@@ -1,4 +1,4 @@
-# Spider-Man-VR
+# Spider-Man VR
 
 ## Group Members:
 - Victor Fotev
