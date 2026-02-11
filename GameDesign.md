@@ -32,13 +32,13 @@ The game will be set in New York City. This environment is great for our main ch
 ## State Diagrams:
 
 ### Primary Game Loop:
-![unnamed](https://github.com/user-attachments/assets/a6fe89fa-defd-43ee-92b7-ea6712ca5907)
+![IMG_2617](https://github.com/user-attachments/assets/7cd88062-9d22-49e7-8ce9-94e201459128)
+
 
 
 ### Player States:
-![IMG_2598](https://github.com/user-attachments/assets/a604d2e1-fa7e-4885-a5aa-f7ddd93e4f03)
+![IMG_2619](https://github.com/user-attachments/assets/cbc279d0-4534-415d-a91b-5dcb3bfaf7d4)
 
 
 ## Enemy Behavior:
-![IMG_2597](https://github.com/user-attachments/assets/bfcb00c0-19d6-4b66-9af3-24d78943a88c)
-
+![IMG_2618](https://github.com/user-attachments/assets/9cf0815b-c458-4fd7-831c-3ca4d48bc00c)
