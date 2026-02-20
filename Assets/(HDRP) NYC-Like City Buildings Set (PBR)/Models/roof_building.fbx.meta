@@ -1,9 +1,46 @@
 fileFormatVersion: 2
 guid: 7ed4a9592e912e140b7aa7ecc0645afa
+AssetOrigin:
+  serializedVersion: 1
+  productId: 239452
+  packageName: (HDRP) NYC-like City Buildings Set (PBR)
+  packageVersion: 1.0
+  assetPath: Assets/(HDRP) NYC-Like City Buildings Set (PBR)/Models/roof_building.fbx
+  uploadId: 552700
 ModelImporter:
-  serializedVersion: 22103
+  serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: concrate
+    second: {fileID: 2100000, guid: db9f2f57eca0fa0458c632d9da878554, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: light
+    second: {fileID: 2100000, guid: f16d4b04411abdf41ac3251f6849da49, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal
+    second: {fileID: 2100000, guid: c7cbd8548fe74c44b92b3f0335fccb76, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: plaster
+    second: {fileID: 2100000, guid: 79bc1b7c35c817740b7eea1a0899bdfb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: plastic
+    second: {fileID: 2100000, guid: 852b2cb0131b8654e999ab15f0da5064, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: roof
+    second: {fileID: 2100000, guid: 88b79587ed4152d408c257bf3ddb2adb, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -16,8 +53,6 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: 
-    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -37,9 +72,10 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
+    importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -57,6 +93,9 @@ ModelImporter:
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
     optimizeBones: 1
+    generateMeshLods: 0
+    meshLodGenerationFlags: 0
+    maximumMeshLod: -1
     meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
@@ -106,10 +145,3 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 239452
-  packageName: (HDRP) NYC-like City Buildings Set (PBR)
-  packageVersion: 1.0
-  assetPath: Assets/(HDRP) NYC-Like City Buildings Set (PBR)/Models/roof_building.fbx
-  uploadId: 552700
