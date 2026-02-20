@@ -1,9 +1,61 @@
 fileFormatVersion: 2
 guid: f5fffac18cfc9284cab775b7e5d97ed3
+AssetOrigin:
+  serializedVersion: 1
+  productId: 239452
+  packageName: (HDRP) NYC-like City Buildings Set (PBR)
+  packageVersion: 1.0
+  assetPath: Assets/(HDRP) NYC-Like City Buildings Set (PBR)/Models/building_5.fbx
+  uploadId: 552700
 ModelImporter:
-  serializedVersion: 22103
+  serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: brick
+    second: {fileID: 2100000, guid: 3c385346f0193b6478e64aff99ea1a68, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: concrate
+    second: {fileID: 2100000, guid: dabc9351a198861499b6f335ba6af7a7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: light
+    second: {fileID: 2100000, guid: d7ee068bf1da57b4cb01732b673b476e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal
+    second: {fileID: 2100000, guid: 2ac8e27b88ee61842a20c1661498161e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal_bronze
+    second: {fileID: 2100000, guid: 3b0d0fdd834c12e4bb9767e438110f77, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: plastic
+    second: {fileID: 2100000, guid: aefda11395cc3344690892e18b9fcd9a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: roof
+    second: {fileID: 2100000, guid: 63e1fc616c386194095ab4a2f678780c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: window
+    second: {fileID: 2100000, guid: 6c4702de456ce3d40b1f6b9e9c0de22a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wood
+    second: {fileID: 2100000, guid: 1d666279b1d501c40a5f1a928744c55b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -16,8 +68,6 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: 
-    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -37,9 +87,10 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
+    importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -57,6 +108,9 @@ ModelImporter:
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
     optimizeBones: 1
+    generateMeshLods: 0
+    meshLodGenerationFlags: 0
+    maximumMeshLod: -1
     meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
@@ -106,10 +160,3 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 239452
-  packageName: (HDRP) NYC-like City Buildings Set (PBR)
-  packageVersion: 1.0
-  assetPath: Assets/(HDRP) NYC-Like City Buildings Set (PBR)/Models/building_5.fbx
-  uploadId: 552700
