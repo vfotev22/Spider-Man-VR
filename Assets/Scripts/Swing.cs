@@ -25,11 +25,6 @@ public class Swing : MonoBehaviour
 
     private bool hasHit;
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         GetSwingPoint();
