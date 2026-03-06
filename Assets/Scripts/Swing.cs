@@ -1,122 +1,154 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Swing : MonoBehaviour
 {
-
+    [Header("References")]
     public Transform startSwingHand;
-    public float maxDistance = 35;
-    public LayerMask swingableLayer;
-
     public Transform predictionPoint;
+    public Rigidbody playerRigidbody;
+    public LineRenderer lineRenderer;
+
+    [Header("Input")]
     public InputActionProperty swingAction;
     public InputActionProperty pullAction;
 
-    public float pullingStrength = 500;
+    [Header("Swing Settings")]
+    public float maxDistance = 35f;
+    public LayerMask swingableLayer;
 
-    public Rigidbody playerRigidbody;
+    public float reelSpeed = 5f;
+    public float minRopeLength = 2f;
+    public float pullAssistForce = 2f;
 
-    public LineRenderer lineRenderer;
+    [Header("Joint Settings")]
+    public float spring = 4.5f;
+    public float damper = 1f;
+    public float massScale = 4.5f;
+    public float minDistanceMultiplier = 0.25f;
+    public float maxDistanceMultiplier = 0.8f;
 
     private SpringJoint joint;
     private Vector3 swingPoint;
-
     private bool hasHit;
+
+    public bool IsSwinging => joint != null;
 
     void Update()
     {
         GetSwingPoint();
 
-        if(swingAction.action.WasPressedThisFrame())
+        if (swingAction.action.WasPressedThisFrame())
         {
             StartSwing();
         }
-        else if(swingAction.action.WasReleasedThisFrame())
+        else if (swingAction.action.WasReleasedThisFrame())
         {
             StopSwing();
         }
 
-        PullRope();
-
         DrawRope();
+    }
+
+    void FixedUpdate()
+    {
+        PullRope();
     }
 
     public void StartSwing()
     {
-        if(hasHit)
-        {
-            joint = playerRigidbody.gameObject.AddComponent<SpringJoint>();
-            joint.autoConfigureConnectedAnchor = false;
-            joint.connectedAnchor = swingPoint;
+        if (!hasHit || joint != null)
+            return;
 
-            float distance = Vector3.Distance(playerRigidbody.position, swingPoint);
-            joint.maxDistance = distance;
+        joint = playerRigidbody.gameObject.AddComponent<SpringJoint>();
+        joint.autoConfigureConnectedAnchor = false;
+        joint.connectedAnchor = swingPoint;
 
-            joint.spring = 4.5f;
-            joint.damper = 7;
-            joint.massScale = 4.5f;
-        }
+        float distance = Vector3.Distance(playerRigidbody.position, swingPoint);
+
+        joint.maxDistance = distance * maxDistanceMultiplier;
+        joint.minDistance = distance * minDistanceMultiplier;
+
+        joint.spring = spring;
+        joint.damper = damper;
+        joint.massScale = massScale;
     }
 
     public void PullRope()
     {
-        if(!joint)
+        if (joint == null)
             return;
 
-        if(pullAction.action.IsPressed())
+        if (pullAction.action.IsPressed())
         {
-            Vector3 direction = (swingPoint - startSwingHand.position).normalized;
-            playerRigidbody.AddForce(direction * pullingStrength * Time.deltaTime);
+            joint.maxDistance = Mathf.Max(
+                joint.maxDistance - reelSpeed * Time.fixedDeltaTime,
+                minRopeLength
+            );
 
-            float distance = Vector3.Distance(playerRigidbody.position, swingPoint);
-            joint.maxDistance = distance;
+            joint.minDistance = Mathf.Max(
+                joint.minDistance - (reelSpeed * 0.5f) * Time.fixedDeltaTime,
+                minRopeLength * 0.5f
+            );
+
+            Vector3 direction = (swingPoint - playerRigidbody.position).normalized;
+            playerRigidbody.AddForce(direction * pullAssistForce, ForceMode.Acceleration);
         }
     }
 
     public void StopSwing()
     {
-        Destroy(joint);
+        if (joint != null)
+        {
+            Destroy(joint);
+        }
     }
 
     public void GetSwingPoint()
     {
-        if (joint)
+        if (joint != null)
         {
-            predictionPoint.gameObject.SetActive(false);
+            if (predictionPoint != null)
+                predictionPoint.gameObject.SetActive(false);
             return;
         }
 
-        RaycastHit raycastHit;
+        hasHit = Physics.Raycast(
+            startSwingHand.position,
+            startSwingHand.forward,
+            out RaycastHit raycastHit,
+            maxDistance,
+            swingableLayer
+        );
 
-        hasHit = Physics.Raycast(startSwingHand.position, startSwingHand.forward, out raycastHit, maxDistance,swingableLayer);
-
-        if(hasHit)
+        if (hasHit)
         {
             swingPoint = raycastHit.point;
-            predictionPoint.gameObject.SetActive(true);
-            predictionPoint.position = swingPoint;
 
+            if (predictionPoint != null)
+            {
+                predictionPoint.gameObject.SetActive(true);
+                predictionPoint.position = swingPoint;
+            }
         }
         else
         {
-            predictionPoint.gameObject.SetActive(false);
+            if (predictionPoint != null)
+                predictionPoint.gameObject.SetActive(false);
         }
     }
 
     public void DrawRope()
     {
-        if(!joint)
+        if (joint == null)
         {
             lineRenderer.enabled = false;
+            return;
         }
-        else
-        {
-            lineRenderer.enabled = true;
-            lineRenderer.positionCount = 2;
-            lineRenderer.SetPosition(0, startSwingHand.position);
-            lineRenderer.SetPosition(1, swingPoint);
-        }
+
+        lineRenderer.enabled = true;
+        lineRenderer.positionCount = 2;
+        lineRenderer.SetPosition(0, startSwingHand.position);
+        lineRenderer.SetPosition(1, swingPoint);
     }
 }
