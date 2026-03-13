@@ -20,6 +20,7 @@ public class ContinuousMovementPhysics : MonoBehaviour
     public Swing leftSwing;
     public Swing rightSwing;
     public float swingMoveMultiplier = 0.3f;
+    public float swingTangentBoost = 8f;
 
     [Header("Input")]
     public InputActionProperty moveInputSource;
@@ -79,16 +80,33 @@ public class ContinuousMovementPhysics : MonoBehaviour
 
         float inputAmount = moveInputAxis.magnitude;
 
-        // While swinging, don't kill momentum if the player isn't pushing the stick
-        if (isSwinging && inputAmount < 0.1f)
+        if (inputAmount < 0.1f)
             return;
+
+        if (isSwinging)
+        {
+            Swing activeSwing = null;
+
+            if (leftSwing != null && leftSwing.IsSwinging)
+                activeSwing = leftSwing;
+            else if (rightSwing != null && rightSwing.IsSwinging)
+                activeSwing = rightSwing;
+
+            if (activeSwing != null)
+            {
+                Vector3 ropeDir = (rb.position - activeSwing.GetCurrentSwingPoint()).normalized;
+                Vector3 tangentialMove = Vector3.ProjectOnPlane(moveDirection, ropeDir).normalized;
+
+                rb.AddForce(tangentialMove * swingTangentBoost, ForceMode.Acceleration);
+            }
+
+            return;
+        }
 
         float controlMultiplier = isGrounded ? 1f : airControlMultiplier;
 
-        float speedMultiplier = isSwinging ? swingMoveMultiplier : 1f;
-
         Vector3 currentHorizontalVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
-        Vector3 targetHorizontalVelocity = moveDirection * moveSpeed * speedMultiplier;
+        Vector3 targetHorizontalVelocity = moveDirection * moveSpeed;
         Vector3 velocityDifference = targetHorizontalVelocity - currentHorizontalVelocity;
 
         Vector3 force = velocityDifference * acceleration * controlMultiplier;

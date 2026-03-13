@@ -16,23 +16,27 @@ public class Swing : MonoBehaviour
     [Header("Swing Settings")]
     public float maxDistance = 35f;
     public LayerMask swingableLayer;
-
     public float reelSpeed = 5f;
     public float minRopeLength = 2f;
     public float pullAssistForce = 2f;
 
     [Header("Joint Settings")]
-    public float spring = 4.5f;
-    public float damper = 1f;
+    public float spring = 8f;
+    public float damper = 0.4f;
     public float massScale = 4.5f;
-    public float minDistanceMultiplier = 0.25f;
-    public float maxDistanceMultiplier = 0.8f;
+    public float minDistanceMultiplier = 0.5f;
+    public float maxDistanceMultiplier = 0.6f;
 
     private SpringJoint joint;
     private Vector3 swingPoint;
     private bool hasHit;
 
     public bool IsSwinging => joint != null;
+
+    public Vector3 GetCurrentSwingPoint()
+    {
+        return swingPoint;
+    }
 
     void Update()
     {
