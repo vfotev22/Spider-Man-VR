@@ -5,6 +5,7 @@ public class Swing : MonoBehaviour
 {
     [Header("References")]
     public Transform startSwingHand;
+    public Transform playerBody;
     public Transform predictionPoint;
     public Rigidbody playerRigidbody;
     public LineRenderer lineRenderer;
@@ -16,9 +17,18 @@ public class Swing : MonoBehaviour
     [Header("Swing Settings")]
     public float maxDistance = 35f;
     public LayerMask swingableLayer;
+
+    [Header("Trigger Reel")]
     public float reelSpeed = 5f;
     public float minRopeLength = 2f;
-    public float pullAssistForce = 2f;
+    public float triggerPullForce = 8f;
+    public float triggerPullUpwardBoost = 0f;
+
+    [Header("Physical Pull Motion")]
+    public float pullMotionThreshold = .9f;
+    public float pullMotionVelocityBoost = 6f;
+    public float maxPullSpeedTowardWeb = 12f;
+    public float pullMotionCooldown = 0.15f;
 
     [Header("Joint Settings")]
     public float spring = 8f;
@@ -31,11 +41,19 @@ public class Swing : MonoBehaviour
     private Vector3 swingPoint;
     private bool hasHit;
 
+    private Vector3 previousHandPosition;
+    private float pullCooldownTimer;
+
     public bool IsSwinging => joint != null;
 
     public Vector3 GetCurrentSwingPoint()
     {
         return swingPoint;
+    }
+
+    void Start()
+    {
+        previousHandPosition = startSwingHand.position;
     }
 
     void Update()
@@ -56,7 +74,13 @@ public class Swing : MonoBehaviour
 
     void FixedUpdate()
     {
-        PullRope();
+        if (pullCooldownTimer > 0f)
+            pullCooldownTimer -= Time.fixedDeltaTime;
+
+        PullRopeWithTrigger();
+        DetectPhysicalPullMotion();
+
+        previousHandPosition = startSwingHand.position;
     }
 
     public void StartSwing()
@@ -78,7 +102,7 @@ public class Swing : MonoBehaviour
         joint.massScale = massScale;
     }
 
-    public void PullRope()
+    public void PullRopeWithTrigger()
     {
         if (joint == null)
             return;
@@ -95,9 +119,42 @@ public class Swing : MonoBehaviour
                 minRopeLength * 0.5f
             );
 
-            Vector3 direction = (swingPoint - playerRigidbody.position).normalized;
-            playerRigidbody.AddForce(direction * pullAssistForce, ForceMode.Acceleration);
+            Vector3 directionToWeb = (swingPoint - playerRigidbody.position).normalized;
+            Vector3 pullDirection = (directionToWeb + Vector3.up * triggerPullUpwardBoost).normalized;
+
+            playerRigidbody.AddForce(pullDirection * triggerPullForce, ForceMode.Acceleration);
         }
+    }
+
+    public void DetectPhysicalPullMotion()
+    {
+        if (joint == null || playerBody == null)
+            return;
+
+        if (pullCooldownTimer > 0f)
+            return;
+
+        Vector3 handVelocity = (startSwingHand.position - previousHandPosition) / Time.fixedDeltaTime;
+
+        Vector3 handToBodyDirection = (playerBody.position - startSwingHand.position).normalized;
+        float pullAmount = Vector3.Dot(handVelocity, handToBodyDirection);
+
+        if (pullAmount < pullMotionThreshold)
+            return;
+
+        Vector3 directionToWeb = (swingPoint - playerRigidbody.position).normalized;
+
+        float currentSpeedTowardWeb = Vector3.Dot(playerRigidbody.linearVelocity, directionToWeb);
+        float allowedBoost = Mathf.Max(0f, maxPullSpeedTowardWeb - currentSpeedTowardWeb);
+
+        if (allowedBoost <= 0f)
+            return;
+
+        float appliedBoost = Mathf.Min(pullMotionVelocityBoost, allowedBoost);
+
+        playerRigidbody.AddForce(directionToWeb * appliedBoost, ForceMode.VelocityChange);
+
+        pullCooldownTimer = pullMotionCooldown;
     }
 
     public void StopSwing()

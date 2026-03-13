@@ -1282,6 +1282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Swing
   startSwingHand: {fileID: 1079057167}
+  playerBody: {fileID: 0}
   predictionPoint: {fileID: 2079265203}
   playerRigidbody: {fileID: 0}
   lineRenderer: {fileID: 1609533240}
@@ -1315,7 +1316,12 @@ MonoBehaviour:
     m_Bits: 1
   reelSpeed: 5
   minRopeLength: 2
-  pullAssistForce: 2
+  triggerPullForce: 8
+  triggerPullUpwardBoost: 0
+  pullMotionThreshold: 1.2
+  pullMotionVelocityBoost: 4
+  maxPullSpeedTowardWeb: 12
+  pullMotionCooldown: 0.15
   spring: 4.5
   damper: 7
   massScale: 4.5
@@ -2731,6 +2737,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Swing
   startSwingHand: {fileID: 1668585495}
+  playerBody: {fileID: 0}
   predictionPoint: {fileID: 1507421153}
   playerRigidbody: {fileID: 0}
   lineRenderer: {fileID: 58128447}
@@ -2764,7 +2771,12 @@ MonoBehaviour:
     m_Bits: 1
   reelSpeed: 5
   minRopeLength: 2
-  pullAssistForce: 2
+  triggerPullForce: 8
+  triggerPullUpwardBoost: 0
+  pullMotionThreshold: 1.2
+  pullMotionVelocityBoost: 4
+  maxPullSpeedTowardWeb: 12
+  pullMotionCooldown: 0.15
   spring: 4.5
   damper: 7
   massScale: 4.5
@@ -3212,6 +3224,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Physics Rig
       objectReference: {fileID: 0}
+    - target: {fileID: 911820331842568166, guid: 3f2d0f47b6709444eb8bff7b9d297032, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3749137213397951146, guid: 3f2d0f47b6709444eb8bff7b9d297032, type: 3}
+      propertyPath: playerBody
+      value: 
+      objectReference: {fileID: 8236183346346088978}
+    - target: {fileID: 4165270253990616458, guid: 3f2d0f47b6709444eb8bff7b9d297032, type: 3}
+      propertyPath: playerBody
+      value: 
+      objectReference: {fileID: 8236183346346088977}
     - target: {fileID: 6252234951420515458, guid: 3f2d0f47b6709444eb8bff7b9d297032, type: 3}
       propertyPath: m_LocalPosition.x
       value: -52.7
@@ -3257,6 +3281,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f2d0f47b6709444eb8bff7b9d297032, type: 3}
+--- !u!4 &8236183346346088977 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4582056277405726866, guid: 3f2d0f47b6709444eb8bff7b9d297032, type: 3}
+  m_PrefabInstance: {fileID: 8236183346346088976}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8236183346346088978 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6252234951420515458, guid: 3f2d0f47b6709444eb8bff7b9d297032, type: 3}
+  m_PrefabInstance: {fileID: 8236183346346088976}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
