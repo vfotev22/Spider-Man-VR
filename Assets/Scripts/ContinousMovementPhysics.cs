@@ -3,37 +3,30 @@ using UnityEngine.InputSystem;
 
 public class ContinuousMovementPhysics : MonoBehaviour
 {
-    [Header("Movement")]
     public float moveSpeed = 6f;
     public float acceleration = 35f;
     public float maxAccelerationForce = 40f;
     public bool onlyMoveWhenGrounded = false;
     public float airControlMultiplier = 0.4f;
 
-    [Header("Turning")]
     public float turnSpeed = 90f;
 
-    [Header("Jump")]
     public float jumpVelocity = 7f;
 
-    [Header("Swing")]
     public Swing leftSwing;
     public Swing rightSwing;
     public float swingMoveMultiplier = 0.3f;
     public float swingTangentBoost = 8f;
 
-    [Header("Input")]
     public InputActionProperty moveInputSource;
     public InputActionProperty turnInputSource;
     public InputActionProperty jumpInputSource;
 
-    [Header("References")]
     public Rigidbody rb;
     public Transform directionSource;
     public Transform playerHead;
     public CapsuleCollider bodyCollider;
 
-    [Header("Grounding")]
     public LayerMask groundLayer;
     public float groundCheckOffset = 0.05f;
 
@@ -41,6 +34,8 @@ public class ContinuousMovementPhysics : MonoBehaviour
     private Vector2 turnInputAxis;
     private bool jumpPressed;
     private bool isGrounded;
+
+    public WallClimb wallClimb;
 
     void Update()
     {
@@ -67,6 +62,9 @@ public class ContinuousMovementPhysics : MonoBehaviour
 
     void HandleMovement()
     {
+        if (wallClimb != null && wallClimb.IsClimbing)
+            return;
+
         if (onlyMoveWhenGrounded && !isGrounded)
             return;
 
@@ -128,6 +126,9 @@ public class ContinuousMovementPhysics : MonoBehaviour
 
     void HandleJump()
     {
+        if (wallClimb != null && wallClimb.IsClimbing)
+            return;
+
         if (!jumpPressed || !isGrounded)
             return;
 

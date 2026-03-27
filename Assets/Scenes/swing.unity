@@ -644,6 +644,51 @@ Transform:
   - {fileID: 1698747869}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &407529593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738854188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c5bdab471d544e4aaea656af22c9d3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  playerRb: {fileID: 1738854191}
+  leftHand: {fileID: 1738854190}
+  rightHand: {fileID: 1738854189}
+  leftDetector: {fileID: 8236183346346088982}
+  rightDetector: {fileID: 8236183346346088984}
+  leftGripAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Left Grip
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 22daca98-263e-479a-b856-1f4a68de6511
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -6131295136447488360, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  rightGripAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Right Grip
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 4824d7a1-18d5-40b8-b87f-097a2f176894
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 187161793506945269, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  climbVelocityMultiplier: 4.5
+  velocityLerpSpeed: 10
+  maxClimbSpeed: 20
+  climbDrag: 6
 --- !u!1 &636139957
 GameObject:
   m_ObjectHideFlags: 0
@@ -1327,6 +1372,8 @@ MonoBehaviour:
   massScale: 4.5
   minDistanceMultiplier: 0.25
   maxDistanceMultiplier: 0.8
+  climbDetector: {fileID: 0}
+  wallClimb: {fileID: 0}
 --- !u!114 &1079057169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2782,6 +2829,8 @@ MonoBehaviour:
   massScale: 4.5
   minDistanceMultiplier: 0.25
   maxDistanceMultiplier: 0.8
+  climbDetector: {fileID: 0}
+  wallClimb: {fileID: 0}
 --- !u!114 &1668585497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2942,6 +2991,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 290977581}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1738854188 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 911820331842568166, guid: 3f2d0f47b6709444eb8bff7b9d297032, type: 3}
+  m_PrefabInstance: {fileID: 8236183346346088976}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1738854189 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4734858955028067666, guid: 3f2d0f47b6709444eb8bff7b9d297032, type: 3}
+  m_PrefabInstance: {fileID: 8236183346346088976}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1738854190 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8831165467221645121, guid: 3f2d0f47b6709444eb8bff7b9d297032, type: 3}
+  m_PrefabInstance: {fileID: 8236183346346088976}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &1738854191 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 6701928014599363055, guid: 3f2d0f47b6709444eb8bff7b9d297032, type: 3}
+  m_PrefabInstance: {fileID: 8236183346346088976}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1851251790
 GameObject:
   m_ObjectHideFlags: 0
@@ -3228,14 +3297,34 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2320176980449459115, guid: 3f2d0f47b6709444eb8bff7b9d297032, type: 3}
+      propertyPath: wallClimb
+      value: 
+      objectReference: {fileID: 407529593}
+    - target: {fileID: 3749137213397951146, guid: 3f2d0f47b6709444eb8bff7b9d297032, type: 3}
+      propertyPath: wallClimb
+      value: 
+      objectReference: {fileID: 407529593}
     - target: {fileID: 3749137213397951146, guid: 3f2d0f47b6709444eb8bff7b9d297032, type: 3}
       propertyPath: playerBody
       value: 
       objectReference: {fileID: 8236183346346088978}
+    - target: {fileID: 3749137213397951146, guid: 3f2d0f47b6709444eb8bff7b9d297032, type: 3}
+      propertyPath: climbDetector
+      value: 
+      objectReference: {fileID: 8236183346346088982}
+    - target: {fileID: 4165270253990616458, guid: 3f2d0f47b6709444eb8bff7b9d297032, type: 3}
+      propertyPath: wallClimb
+      value: 
+      objectReference: {fileID: 407529593}
     - target: {fileID: 4165270253990616458, guid: 3f2d0f47b6709444eb8bff7b9d297032, type: 3}
       propertyPath: playerBody
       value: 
       objectReference: {fileID: 8236183346346088977}
+    - target: {fileID: 4165270253990616458, guid: 3f2d0f47b6709444eb8bff7b9d297032, type: 3}
+      propertyPath: climbDetector
+      value: 
+      objectReference: {fileID: 8236183346346088984}
     - target: {fileID: 6252234951420515458, guid: 3f2d0f47b6709444eb8bff7b9d297032, type: 3}
       propertyPath: m_LocalPosition.x
       value: -52.7
@@ -3279,7 +3368,22 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 911820331842568166, guid: 3f2d0f47b6709444eb8bff7b9d297032, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 407529593}
+    - targetCorrespondingSourceObject: {fileID: 64237023075645433, guid: 3f2d0f47b6709444eb8bff7b9d297032, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8236183346346088983}
+    - targetCorrespondingSourceObject: {fileID: 64237023075645433, guid: 3f2d0f47b6709444eb8bff7b9d297032, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8236183346346088982}
+    - targetCorrespondingSourceObject: {fileID: 4805678996988298584, guid: 3f2d0f47b6709444eb8bff7b9d297032, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8236183346346088981}
+    - targetCorrespondingSourceObject: {fileID: 4805678996988298584, guid: 3f2d0f47b6709444eb8bff7b9d297032, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8236183346346088984}
   m_SourcePrefab: {fileID: 100100000, guid: 3f2d0f47b6709444eb8bff7b9d297032, type: 3}
 --- !u!4 &8236183346346088977 stripped
 Transform:
@@ -3291,6 +3395,88 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6252234951420515458, guid: 3f2d0f47b6709444eb8bff7b9d297032, type: 3}
   m_PrefabInstance: {fileID: 8236183346346088976}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8236183346346088979 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4805678996988298584, guid: 3f2d0f47b6709444eb8bff7b9d297032, type: 3}
+  m_PrefabInstance: {fileID: 8236183346346088976}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8236183346346088980 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 64237023075645433, guid: 3f2d0f47b6709444eb8bff7b9d297032, type: 3}
+  m_PrefabInstance: {fileID: 8236183346346088976}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &8236183346346088981
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8236183346346088979}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.09
+  m_Center: {x: 0.03, y: 0, z: -0.04}
+--- !u!114 &8236183346346088982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8236183346346088980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac14cdf138f5de04398c795eb7834375, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  climbableLayer:
+    serializedVersion: 2
+    m_Bits: 1
+--- !u!135 &8236183346346088983
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8236183346346088980}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.09
+  m_Center: {x: -0.03, y: 0, z: -0.04}
+--- !u!114 &8236183346346088984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8236183346346088979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac14cdf138f5de04398c795eb7834375, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HandClimbDetector
+  climbableLayer:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

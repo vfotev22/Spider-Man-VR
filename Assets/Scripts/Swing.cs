@@ -3,34 +3,28 @@ using UnityEngine.InputSystem;
 
 public class Swing : MonoBehaviour
 {
-    [Header("References")]
     public Transform startSwingHand;
     public Transform playerBody;
     public Transform predictionPoint;
     public Rigidbody playerRigidbody;
     public LineRenderer lineRenderer;
 
-    [Header("Input")]
     public InputActionProperty swingAction;
     public InputActionProperty pullAction;
 
-    [Header("Swing Settings")]
     public float maxDistance = 35f;
     public LayerMask swingableLayer;
 
-    [Header("Trigger Reel")]
     public float reelSpeed = 5f;
     public float minRopeLength = 2f;
     public float triggerPullForce = 8f;
     public float triggerPullUpwardBoost = 0f;
 
-    [Header("Physical Pull Motion")]
     public float pullMotionThreshold = .9f;
     public float pullMotionVelocityBoost = 6f;
     public float maxPullSpeedTowardWeb = 12f;
     public float pullMotionCooldown = 0.15f;
 
-    [Header("Joint Settings")]
     public float spring = 8f;
     public float damper = 0.4f;
     public float massScale = 4.5f;
@@ -46,6 +40,9 @@ public class Swing : MonoBehaviour
 
     public bool IsSwinging => joint != null;
 
+    public HandClimbDetector climbDetector;
+    public WallClimb wallClimb;
+
     public Vector3 GetCurrentSwingPoint()
     {
         return swingPoint;
@@ -60,9 +57,15 @@ public class Swing : MonoBehaviour
     {
         GetSwingPoint();
 
+        bool nearClimbable = climbDetector != null && climbDetector.IsTouchingClimbable;
+        bool currentlyClimbing = wallClimb != null && wallClimb.IsClimbing;
+
         if (swingAction.action.WasPressedThisFrame())
         {
-            StartSwing();
+            if (!nearClimbable && !currentlyClimbing)
+            {
+                StartSwing();
+            }
         }
         else if (swingAction.action.WasReleasedThisFrame())
         {
