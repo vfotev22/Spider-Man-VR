@@ -16,6 +16,8 @@ public class WallClimb : MonoBehaviour
     public float velocityLerpSpeed = 12f;
     public float maxClimbSpeed = 6f;
     public float climbDrag = 20f;
+    public float handSwitchBoost = 2.5f;
+    public float climbAssistUpward = 1.5f;
 
     private enum ClimbHand
     {
@@ -42,11 +44,13 @@ public class WallClimb : MonoBehaviour
         {
             activeHand = ClimbHand.Left;
             previousActiveHandPosition = leftHand.position;
+            playerRb.linearVelocity += Vector3.up * handSwitchBoost;
         }
         else if (rightPressed && rightCanClimb && activeHand != ClimbHand.Right)
         {
             activeHand = ClimbHand.Right;
             previousActiveHandPosition = rightHand.position;
+            playerRb.linearVelocity += Vector3.up * handSwitchBoost;
         }
 
         if (activeHand == ClimbHand.Left && !leftPressed)
@@ -55,6 +59,7 @@ public class WallClimb : MonoBehaviour
             {
                 activeHand = ClimbHand.Right;
                 previousActiveHandPosition = rightHand.position;
+                playerRb.linearVelocity += Vector3.up * handSwitchBoost;
             }
             else
             {
@@ -68,6 +73,7 @@ public class WallClimb : MonoBehaviour
             {
                 activeHand = ClimbHand.Left;
                 previousActiveHandPosition = leftHand.position;
+                playerRb.linearVelocity += Vector3.up * handSwitchBoost;
             }
             else
             {
@@ -96,6 +102,7 @@ public class WallClimb : MonoBehaviour
             handDelta = Vector3.zero;
 
         Vector3 climbVelocity = -(handDelta / Time.fixedDeltaTime) * climbVelocityMultiplier;
+        climbVelocity += Vector3.up * climbAssistUpward;
         climbVelocity = Vector3.ClampMagnitude(climbVelocity, maxClimbSpeed);
 
         playerRb.linearVelocity = Vector3.Lerp(

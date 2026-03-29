@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8831165467221645121}
   - component: {fileID: 5984716399737863100}
+  - component: {fileID: 2300287099452943754}
+  - component: {fileID: 5612573075040561625}
   m_Layer: 6
   m_Name: Left Hand
   m_TagString: Untagged
@@ -104,6 +106,42 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+--- !u!135 &2300287099452943754
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64237023075645433}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.09
+  m_Center: {x: -0.03, y: 0, z: -0.04}
+--- !u!114 &5612573075040561625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64237023075645433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac14cdf138f5de04398c795eb7834375, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  climbableLayer:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!1 &99442503706864754
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,9 +343,10 @@ GameObject:
   - component: {fileID: 6252234951420515458}
   - component: {fileID: 3773227353358463083}
   - component: {fileID: 2320176980449459115}
+  - component: {fileID: 596228049176135732}
   m_Layer: 6
   m_Name: Physics Rig
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -374,6 +413,7 @@ MonoBehaviour:
   leftSwing: {fileID: 3749137213397951146}
   rightSwing: {fileID: 4165270253990616458}
   swingMoveMultiplier: 0.3
+  swingTangentBoost: 8
   moveInputSource:
     m_UseReference: 1
     m_Action:
@@ -418,6 +458,54 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   groundCheckOffset: 0.05
+  wallClimb: {fileID: 596228049176135732}
+--- !u!114 &596228049176135732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911820331842568166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c5bdab471d544e4aaea656af22c9d3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  playerRb: {fileID: 6701928014599363055}
+  leftHand: {fileID: 8831165467221645121}
+  rightHand: {fileID: 4734858955028067666}
+  leftDetector: {fileID: 5612573075040561625}
+  rightDetector: {fileID: 3805041987663226598}
+  leftGripAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Left Grip
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 22daca98-263e-479a-b856-1f4a68de6511
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -6131295136447488360, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  rightGripAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Right Grip
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 4824d7a1-18d5-40b8-b87f-097a2f176894
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 187161793506945269, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  climbVelocityMultiplier: 8
+  velocityLerpSpeed: 10
+  maxClimbSpeed: 40
+  climbDrag: 6
+  handSwitchBoost: 2.5
+  climbAssistUpward: 3
 --- !u!1 &1552130848098565355
 GameObject:
   m_ObjectHideFlags: 0
@@ -3255,6 +3343,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4734858955028067666}
   - component: {fileID: 6332299427969574566}
+  - component: {fileID: 6967116627973584905}
+  - component: {fileID: 3805041987663226598}
   m_Layer: 6
   m_Name: Right Hand
   m_TagString: Untagged
@@ -3349,6 +3439,42 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+--- !u!135 &6967116627973584905
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4805678996988298584}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.09
+  m_Center: {x: 0.03, y: 0, z: -0.04}
+--- !u!114 &3805041987663226598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4805678996988298584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac14cdf138f5de04398c795eb7834375, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HandClimbDetector
+  climbableLayer:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!1 &4957119184839088677
 GameObject:
   m_ObjectHideFlags: 0
@@ -3700,6 +3826,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Swing
   startSwingHand: {fileID: 4322053400854462994}
+  playerBody: {fileID: 4582056277405726866}
   predictionPoint: {fileID: 3656563459867279879}
   playerRigidbody: {fileID: 6701928014599363055}
   lineRenderer: {fileID: 8411565724529997532}
@@ -3733,12 +3860,19 @@ MonoBehaviour:
     m_Bits: 1
   reelSpeed: 4
   minRopeLength: 2
-  pullAssistForce: 1
+  triggerPullForce: 8
+  triggerPullUpwardBoost: 0
+  pullMotionThreshold: 0.9
+  pullMotionVelocityBoost: 6
+  maxPullSpeedTowardWeb: 12
+  pullMotionCooldown: 0.15
   spring: 4.5
   damper: 7
   massScale: 4.5
   minDistanceMultiplier: 0.25
   maxDistanceMultiplier: 0.8
+  climbDetector: {fileID: 3805041987663226598}
+  wallClimb: {fileID: 596228049176135732}
 --- !u!1 &6045487999779869197
 GameObject:
   m_ObjectHideFlags: 0
@@ -4752,6 +4886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Swing
   startSwingHand: {fileID: 4606914309137566700}
+  playerBody: {fileID: 6252234951420515458}
   predictionPoint: {fileID: 7448723587085360592}
   playerRigidbody: {fileID: 6701928014599363055}
   lineRenderer: {fileID: 5504420784169843420}
@@ -4785,12 +4920,19 @@ MonoBehaviour:
     m_Bits: 1
   reelSpeed: 4
   minRopeLength: 2
-  pullAssistForce: 1
+  triggerPullForce: 8
+  triggerPullUpwardBoost: 0
+  pullMotionThreshold: 0.9
+  pullMotionVelocityBoost: 6
+  maxPullSpeedTowardWeb: 12
+  pullMotionCooldown: 0.15
   spring: 4.5
   damper: 7
   massScale: 4.5
   minDistanceMultiplier: 0.25
   maxDistanceMultiplier: 0.8
+  climbDetector: {fileID: 5612573075040561625}
+  wallClimb: {fileID: 596228049176135732}
 --- !u!1 &7737588716654027716
 GameObject:
   m_ObjectHideFlags: 0
