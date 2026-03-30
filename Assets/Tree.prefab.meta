@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Tree.prefab.meta
 guid: 3a68f65f30495634c82055266ac9bf34
 PrefabImporter:
+========
+guid: 87a0820a5683a45e7ba458f75640139e
+DefaultImporter:
+>>>>>>>> cityplanning-peter:Assets/school-building/source/18-triangulate/schol_19.mtl.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
