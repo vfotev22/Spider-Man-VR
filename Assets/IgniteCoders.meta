@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/IgniteCoders.meta
 guid: ef56ce38cf5cd13418c9dd44039863c3
+========
+guid: bced8c756847e490fb6b4cefc9fcc011
+>>>>>>>> cityplanning-peter:Assets/building-octagonal-shiny.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
