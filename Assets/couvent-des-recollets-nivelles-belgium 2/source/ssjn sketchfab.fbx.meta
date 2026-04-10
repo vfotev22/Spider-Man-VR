@@ -8,12 +8,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: cloitre
-    second: {fileID: 2100000, guid: 49cbecae58d284063a2c44e7ab474cce, type: 2}
+    second: {fileID: 2100000, guid: f13cbd69f0808c94b99da8644da119fc, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: roof
-    second: {fileID: 2100000, guid: 0fa0ffd0874fb48259e1b2e533be52a9, type: 2}
+    second: {fileID: 2100000, guid: 3baa3085106f47741bbb4aea65be5e6e, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
