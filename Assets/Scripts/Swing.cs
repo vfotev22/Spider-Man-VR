@@ -42,6 +42,8 @@ public class Swing : MonoBehaviour
 
     public HandClimbDetector climbDetector;
     public WallClimb wallClimb;
+    public HandCameraDetector cameraDetector;
+    public CameraGrab cameraGrab;
 
     public Vector3 GetCurrentSwingPoint()
     {
@@ -59,10 +61,13 @@ public class Swing : MonoBehaviour
 
         bool nearClimbable = climbDetector != null && climbDetector.IsTouchingClimbable;
         bool currentlyClimbing = wallClimb != null && wallClimb.IsClimbing;
+        bool blockedByCamera =
+            (cameraDetector != null && cameraDetector.IsTouchingCamera) ||
+            (cameraGrab != null && cameraGrab.IsHoldingCamera);
 
         if (swingAction.action.WasPressedThisFrame())
         {
-            if (!nearClimbable && !currentlyClimbing)
+            if (!nearClimbable && !currentlyClimbing && !blockedByCamera)
             {
                 StartSwing();
             }
@@ -170,6 +175,18 @@ public class Swing : MonoBehaviour
 
     public void GetSwingPoint()
     {
+        bool nearClimbable = climbDetector != null && climbDetector.IsTouchingClimbable;
+
+        if (nearClimbable)
+        {
+            hasHit = false;
+
+            if (predictionPoint != null)
+                predictionPoint.gameObject.SetActive(false);
+
+            return;
+        }
+
         if (joint != null)
         {
             if (predictionPoint != null)
@@ -177,28 +194,31 @@ public class Swing : MonoBehaviour
             return;
         }
 
+        Ray ray = new Ray(startSwingHand.position, startSwingHand.forward);
+
         hasHit = Physics.Raycast(
-            startSwingHand.position,
-            startSwingHand.forward,
+            ray,
             out RaycastHit raycastHit,
             maxDistance,
             swingableLayer
         );
+
+        if (predictionPoint != null)
+            predictionPoint.gameObject.SetActive(true);
 
         if (hasHit)
         {
             swingPoint = raycastHit.point;
 
             if (predictionPoint != null)
-            {
-                predictionPoint.gameObject.SetActive(true);
                 predictionPoint.position = swingPoint;
-            }
         }
         else
         {
+            swingPoint = startSwingHand.position + startSwingHand.forward * maxDistance;
+
             if (predictionPoint != null)
-                predictionPoint.gameObject.SetActive(false);
+                predictionPoint.position = swingPoint;
         }
     }
 

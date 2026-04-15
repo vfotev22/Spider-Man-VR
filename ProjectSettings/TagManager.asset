@@ -6,6 +6,25 @@ TagManager:
   tags:
   - Anchor
   - Camera
+  - Amazing1
+  - Amazing2
+  - Amazing3
+  - Great1
+  - Great2
+  - Great3
+  - Good1
+  - Good2
+  - Good3
+  - AmazingZone
+  - GreatZone
+  - GoodZone
+  - Amazing
+  - Great
+  - Good
+  - CameraZone
+  - ObjectiveMarker1
+  - ObjectiveMarker2
+  - ObjectiveMarker3
   layers:
   - Default
   - TransparentFX
