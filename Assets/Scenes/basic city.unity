@@ -1576,6 +1576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1d6e0f6de821014db28a6a5604f5f41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  photoCounter: {fileID: 0}
   rayOrigin: {fileID: 0}
   triggerAction:
     m_UseReference: 0
@@ -2601,11 +2602,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8792586484180348971, guid: 3798bdf74b07a4810b4d8a3c347eca3b, type: 3}
---- !u!20 &1116685274 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 7277802327414017196, guid: 77e7c27b2c5525e4aa8cc9f99d654486, type: 3}
-  m_PrefabInstance: {fileID: 1432973541}
-  m_PrefabAsset: {fileID: 0}
 --- !u!64 &1123710044
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13734,75 +13730,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -4207443722817456029, guid: 5cb990e3843574fda9f7107c7217de9c, type: 3}
---- !u!1001 &4186479206280910777
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 165053764357106142, guid: db514bf97f33ef14087906b6cb0d032b, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 1116685274}
-    - target: {fileID: 1488409307364718532, guid: db514bf97f33ef14087906b6cb0d032b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -234.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1488409307364718532, guid: db514bf97f33ef14087906b6cb0d032b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 294.82
-      objectReference: {fileID: 0}
-    - target: {fileID: 1488409307364718532, guid: db514bf97f33ef14087906b6cb0d032b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -13.73755
-      objectReference: {fileID: 0}
-    - target: {fileID: 1488409307364718532, guid: db514bf97f33ef14087906b6cb0d032b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.67489195
-      objectReference: {fileID: 0}
-    - target: {fileID: 1488409307364718532, guid: db514bf97f33ef14087906b6cb0d032b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1488409307364718532, guid: db514bf97f33ef14087906b6cb0d032b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7379166
-      objectReference: {fileID: 0}
-    - target: {fileID: 1488409307364718532, guid: db514bf97f33ef14087906b6cb0d032b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1488409307364718532, guid: db514bf97f33ef14087906b6cb0d032b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1488409307364718532, guid: db514bf97f33ef14087906b6cb0d032b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 95.108
-      objectReference: {fileID: 0}
-    - target: {fileID: 1488409307364718532, guid: db514bf97f33ef14087906b6cb0d032b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3034325828646595843, guid: db514bf97f33ef14087906b6cb0d032b, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 1116685274}
-    - target: {fileID: 5675922237117176992, guid: db514bf97f33ef14087906b6cb0d032b, type: 3}
-      propertyPath: m_Name
-      value: Physics Rig
-      objectReference: {fileID: 0}
-    - target: {fileID: 8847672119944283901, guid: db514bf97f33ef14087906b6cb0d032b, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 1116685274}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: db514bf97f33ef14087906b6cb0d032b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -13812,5 +13739,4 @@ SceneRoots:
   - {fileID: 1619442531}
   - {fileID: 1432973541}
   - {fileID: 1199831677}
-  - {fileID: 4186479206280910777}
   - {fileID: 599027416}
