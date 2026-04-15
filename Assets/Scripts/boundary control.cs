@@ -10,7 +10,7 @@ public class boundarycontrol :MonoBehaviour
     {
         if(transform.position.y < threshold)
         {
-            transform.position = new Vector3(0.0f, 0.0f, 0.0f);
+            transform.position = new Vector3(-284.0f, 181.2f, 275.0f);
         }
     }
 }
