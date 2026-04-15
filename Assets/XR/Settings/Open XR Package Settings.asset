@@ -756,7 +756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b862ee14fb479fbfe5fffe655d3ed3, type: 3}
   m_Name: MetaQuestTouchProControllerProfile Standalone
   m_EditorClassIdentifier: 
-  m_enabled: 0
+  m_enabled: 1
   nameUi: Meta Quest Touch Pro Controller Profile
   version: 0.0.1
   featureIdInternal: com.unity.openxr.feature.input.metaquestpro
@@ -869,23 +869,23 @@ MonoBehaviour:
   m_Name: Standalone
   m_EditorClassIdentifier: 
   features:
-  - {fileID: 8221564594354640495}
+  - {fileID: 4963040286616351577}
   - {fileID: -8749980634715080836}
-  - {fileID: 9096479736163431129}
+  - {fileID: 4893829345954421791}
   - {fileID: 9156286117324087925}
   - {fileID: -4478006660784508864}
   - {fileID: -6081641041439107477}
   - {fileID: 32361891232910083}
-  - {fileID: 2497339995422133549}
+  - {fileID: 1727173055597128861}
   - {fileID: 928296757526069075}
   - {fileID: -4647824206626811188}
   - {fileID: 4025793028449617705}
   - {fileID: -381482547018402083}
-  - {fileID: 7413458854745118488}
+  - {fileID: 6841333374066517713}
   - {fileID: 4054846353496584751}
   - {fileID: 8696673654983134887}
   - {fileID: -4731438336562001402}
-  - {fileID: 4890582492822650874}
+  - {fileID: 4135229692886101830}
   - {fileID: -5611916350011621528}
   - {fileID: 239522605376452086}
   customLoaderName: 
@@ -2498,7 +2498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b862ee14fb479fbfe5fffe655d3ed3, type: 3}
   m_Name: MetaQuestTouchProControllerProfile Android
   m_EditorClassIdentifier: 
-  m_enabled: 0
+  m_enabled: 1
   nameUi: Meta Quest Touch Pro Controller Profile
   version: 0.0.1
   featureIdInternal: com.unity.openxr.feature.input.metaquestpro

@@ -23,7 +23,6 @@ public class PhotoCounter : MonoBehaviour
             AddPhoto();
         }
     }
-    // Use camera script to call later
     public void AddPhoto()
     {
         currentPhotos++;
@@ -44,10 +43,8 @@ public class PhotoCounter : MonoBehaviour
     {
         Debug.Log("Objective unlocked!");
 
-        // Put your next objective logic here
     }
 
-    // Optional reset
     public void ResetPhotos()
     {
         currentPhotos = 0;
