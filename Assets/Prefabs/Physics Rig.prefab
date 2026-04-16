@@ -2170,7 +2170,7 @@ MonoBehaviour:
   maxDistance: 100
   swingableLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 8
   reelSpeed: 4
   minRopeLength: 2
   triggerPullForce: 8
@@ -3887,7 +3887,7 @@ Transform:
   m_GameObject: {fileID: 3430809743205349747}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.6618247, z: -0, w: -0.7496587}
-  m_LocalPosition: {x: -41.84, y: 52.56, z: 229.97}
+  m_LocalPosition: {x: 26.11, y: 231.28, z: 108.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3983,7 +3983,7 @@ MonoBehaviour:
   bodyCollider: {fileID: 2246388942453398688}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 9
   groundCheckOffset: 0.05
   wallClimb: {fileID: 9072550299103234636}
 --- !u!114 &9072550299103234636
@@ -5380,7 +5380,7 @@ GameObject:
   - component: {fileID: 873678156327248652}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: Camera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8008,6 +8008,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PhotoCounter
   photoText: {fileID: 147057900599259172}
   photosNeeded: 3
+  stopwatch: {fileID: 5917516870898950152}
+  finalTimeValue: 0
+  finalFormattedTime: 
 --- !u!1 &7215921268636156187
 GameObject:
   m_ObjectHideFlags: 0
@@ -8649,7 +8652,7 @@ MonoBehaviour:
   maxDistance: 100
   swingableLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 8
   reelSpeed: 4
   minRopeLength: 2
   triggerPullForce: 8
@@ -11547,7 +11550,7 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 83097790271614945, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   cameraGrab: {fileID: 786636783238972094}
-  rayDistance: 100
+  rayDistance: 500
   photoRatings: []
   photoScores: 
   totalScore: 0

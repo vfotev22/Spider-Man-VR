@@ -19,6 +19,10 @@ public class MainMenu : MonoBehaviour
     [Header("UI To Hide While Menu Is Active")]
     public GameObject[] uiToHide;
 
+    [Header("Menu Audio")]
+    public AudioSource audioSource;
+    public AudioClip gameStartVoiceLine;
+
     [Header("Menu Raycast")]
     public Transform leftRayHand;
     public Transform rightRayHand;
@@ -185,6 +189,9 @@ public class MainMenu : MonoBehaviour
             menuRoot.SetActive(false);
         else
             gameObject.SetActive(false);
+
+        if (audioSource != null && gameStartVoiceLine != null)
+            audioSource.PlayOneShot(gameStartVoiceLine);
     }
 
     public void ExitGame()
