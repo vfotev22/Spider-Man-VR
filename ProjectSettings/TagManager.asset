@@ -25,6 +25,7 @@ TagManager:
   - ObjectiveMarker1
   - ObjectiveMarker2
   - ObjectiveMarker3
+  - MainMenu
   layers:
   - Default
   - TransparentFX
