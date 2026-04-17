@@ -9,7 +9,7 @@ public class VRStopwatch : MonoBehaviour
     [Header("Settings")]
     public bool facePlayer = true;
 
-    private float elapsedTime = 0f;
+    public float elapsedTime = 0f;
     private bool isRunning = false;
 
     void Start()
