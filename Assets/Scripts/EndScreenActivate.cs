@@ -4,10 +4,9 @@ using System.Collections.Generic;
 
 public class EndScreenActivate : MonoBehaviour
 {
-    
     public GameObject endscreen;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
