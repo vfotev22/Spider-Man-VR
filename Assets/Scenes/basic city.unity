@@ -2668,7 +2668,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &617186885
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2947,6 +2947,18 @@ PrefabInstance:
       propertyPath: swingStartSound
       value: 
       objectReference: {fileID: 8300000, guid: 7a04bf69866098140a87c0b8ac980919, type: 3}
+    - target: {fileID: 3313201945747635038, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 3313201945747635038, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 3313201945747635038, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.33
+      objectReference: {fileID: 0}
     - target: {fileID: 3394682172393270209, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -134.92
@@ -3013,7 +3025,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 7a04bf69866098140a87c0b8ac980919, type: 3}
     - target: {fileID: 8508858921771190492, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8898413499532587427, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
       propertyPath: voiceDelay
@@ -11725,6 +11737,10 @@ PrefabInstance:
     - target: {fileID: 5490526718559420053, guid: a3118db9ac0dc445e8522ecd7622b310, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5491506222770532987, guid: a3118db9ac0dc445e8522ecd7622b310, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5491539537694349392, guid: a3118db9ac0dc445e8522ecd7622b310, type: 3}
       propertyPath: m_Layer
