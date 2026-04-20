@@ -11,6 +11,13 @@ public class CameraRaycast : MonoBehaviour
 
     public float rayDistance = 100f;
 
+    public AudioSource audioSource;
+    public AudioClip cameraShotSound;
+
+    public AudioClip amazingVoice;
+    public AudioClip greatVoice;
+    public AudioClip goodVoice;
+
     public List<string> photoRatings = new List<string>();
     public List<int> photoScores = new List<int>();
     public int totalScore = 0;
@@ -42,6 +49,9 @@ public class CameraRaycast : MonoBehaviour
 
             if (tag.StartsWith("Amazing") || tag.StartsWith("Great") || tag.StartsWith("Good"))
             {
+                if (audioSource != null && cameraShotSound != null)
+                    audioSource.PlayOneShot(cameraShotSound);
+
                 char groupNumber = tag[tag.Length - 1];
 
                 string rating = "";
@@ -52,18 +62,27 @@ public class CameraRaycast : MonoBehaviour
                     rating = "Amazing";
                     score = 3;
                     photoCounter.AddPhoto();
+
+                    if (audioSource != null && amazingVoice != null)
+                        audioSource.PlayOneShot(amazingVoice);
                 }
                 else if (tag.StartsWith("Great"))
                 {
                     rating = "Great";
                     score = 2;
                     photoCounter.AddPhoto();
+
+                    if (audioSource != null && greatVoice != null)
+                        audioSource.PlayOneShot(greatVoice);
                 }
                 else if (tag.StartsWith("Good"))
                 {
                     rating = "Good";
                     score = 1;
                     photoCounter.AddPhoto();
+
+                    if (audioSource != null && goodVoice != null)
+                        audioSource.PlayOneShot(goodVoice);
                 }
 
                 photoRatings.Add(rating);

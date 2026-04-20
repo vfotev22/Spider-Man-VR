@@ -31,6 +31,9 @@ public class Swing : MonoBehaviour
     public float minDistanceMultiplier = 0.5f;
     public float maxDistanceMultiplier = 0.6f;
 
+    public AudioSource audioSource;
+    public AudioClip swingStartSound;
+
     private SpringJoint joint;
     private Vector3 swingPoint;
     private bool hasHit;
@@ -95,6 +98,11 @@ public class Swing : MonoBehaviour
     {
         if (!hasHit || joint != null)
             return;
+
+        if (audioSource != null && swingStartSound != null)
+        {
+            audioSource.PlayOneShot(swingStartSound);
+        }
 
         joint = playerRigidbody.gameObject.AddComponent<SpringJoint>();
         joint.autoConfigureConnectedAnchor = false;

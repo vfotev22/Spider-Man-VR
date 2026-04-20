@@ -25,6 +25,9 @@ TagManager:
   - ObjectiveMarker1
   - ObjectiveMarker2
   - ObjectiveMarker3
+  - MainMenu
+  - Spawn Point
+  - End Level
   layers:
   - Default
   - TransparentFX

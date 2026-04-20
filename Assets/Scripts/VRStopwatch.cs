@@ -9,7 +9,7 @@ public class VRStopwatch : MonoBehaviour
     [Header("Settings")]
     public bool facePlayer = true;
 
-    private float elapsedTime = 0f;
+    public float elapsedTime = 0f;
     private bool isRunning = false;
 
     void Start()
@@ -55,5 +55,19 @@ public class VRStopwatch : MonoBehaviour
         elapsedTime = 0f;
         isRunning = true;
         UpdateDisplay();
+    }
+
+    public float GetElapsedTime()
+    {
+        return elapsedTime;
+    }
+
+    public string GetFormattedTime()
+    {
+        int minutes = Mathf.FloorToInt(elapsedTime / 60f);
+        int seconds = Mathf.FloorToInt(elapsedTime % 60f);
+        int milliseconds = Mathf.FloorToInt((elapsedTime * 1000f) % 1000f);
+
+        return string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds, milliseconds);
     }
 }
