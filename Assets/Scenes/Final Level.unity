@@ -1830,11 +1830,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -7559284139487978868, guid: 90b527263a6f94c80bdfc354b2587b44, type: 3}
---- !u!4 &411565888 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6784057371075900354, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
-  m_PrefabInstance: {fileID: 643501326}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &419693169 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1820179900691350020, guid: a3118db9ac0dc445e8522ecd7622b310, type: 3}
@@ -5182,7 +5177,7 @@ PrefabInstance:
     - target: {fileID: 5468686982814939613, guid: 4a721f5f2317e9c468bcaf421d82ec6f, type: 3}
       propertyPath: rayOrigin
       value: 
-      objectReference: {fileID: 411565888}
+      objectReference: {fileID: 1177421428}
     - target: {fileID: 5468686982814939613, guid: 4a721f5f2317e9c468bcaf421d82ec6f, type: 3}
       propertyPath: cameraGrab
       value: 
@@ -6115,6 +6110,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -288726980894449371, guid: c0d0a54555acb42b7a6c3cdd867db8bc, type: 3}
+--- !u!4 &1177421428 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7591575202560885101, guid: 4a721f5f2317e9c468bcaf421d82ec6f, type: 3}
+  m_PrefabInstance: {fileID: 985621429}
+  m_PrefabAsset: {fileID: 0}
 --- !u!64 &1183637870
 MeshCollider:
   m_ObjectHideFlags: 0

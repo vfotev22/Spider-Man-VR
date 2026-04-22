@@ -24,7 +24,10 @@ public class CameraRaycast : MonoBehaviour
 
     void Update()
     {
-        if (cameraGrab == null || !cameraGrab.IsHoldingCamera)
+        if (cameraGrab == null)
+            return;
+
+        if (cameraGrab.HeldCamera != gameObject)
             return;
 
         if (triggerAction.action.WasPressedThisFrame())
@@ -35,7 +38,7 @@ public class CameraRaycast : MonoBehaviour
 
     void ShootRay()
     {
-        if (rayOrigin == null)
+        if (rayOrigin == null || photoCounter == null)
             return;
 
         Vector3 direction = rayOrigin.forward;
