@@ -3023,6 +3023,10 @@ PrefabInstance:
       propertyPath: swingStartSound
       value: 
       objectReference: {fileID: 8300000, guid: 7a04bf69866098140a87c0b8ac980919, type: 3}
+    - target: {fileID: 7715129323779896759, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8508858921771190492, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
       propertyPath: m_IsActive
       value: 1

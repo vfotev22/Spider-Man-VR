@@ -1830,6 +1830,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -7559284139487978868, guid: 90b527263a6f94c80bdfc354b2587b44, type: 3}
+--- !u!4 &411565888 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6784057371075900354, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
+  m_PrefabInstance: {fileID: 643501326}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &419693169 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1820179900691350020, guid: a3118db9ac0dc445e8522ecd7622b310, type: 3}
@@ -2668,7 +2673,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &617186885
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2923,6 +2928,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 743235128046194312, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1442870091752137378, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
       propertyPath: m_text
       value: 'Left Thumbstick: Move
@@ -2991,6 +3000,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Physics Rig
       objectReference: {fileID: 0}
+    - target: {fileID: 3533123932056416669, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4532258371736421728, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
       propertyPath: audioSource
       value: 
@@ -3003,6 +3016,14 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 6412519129491674073, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6461962511582591089, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6917408802147292473, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
       propertyPath: audioSource
       value: 
@@ -3011,6 +3032,10 @@ PrefabInstance:
       propertyPath: swingStartSound
       value: 
       objectReference: {fileID: 8300000, guid: 7a04bf69866098140a87c0b8ac980919, type: 3}
+    - target: {fileID: 7715129323779896759, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8508858921771190492, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -5090,6 +5115,112 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -8472149940775325159, guid: 6d7f7269b4add4fe0bc26de9bbecafc4, type: 3}
+--- !u!1001 &985621429
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1841461376}
+    m_Modifications:
+    - target: {fileID: 1911139007022795249, guid: 4a721f5f2317e9c468bcaf421d82ec6f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6696714
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911139007022795249, guid: 4a721f5f2317e9c468bcaf421d82ec6f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.6696717
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911139007022795249, guid: 4a721f5f2317e9c468bcaf421d82ec6f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.6696714
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911139007022795249, guid: 4a721f5f2317e9c468bcaf421d82ec6f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.321869
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911139007022795249, guid: 4a721f5f2317e9c468bcaf421d82ec6f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.638794
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911139007022795249, guid: 4a721f5f2317e9c468bcaf421d82ec6f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -46.053528
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911139007022795249, guid: 4a721f5f2317e9c468bcaf421d82ec6f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5400244
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911139007022795249, guid: 4a721f5f2317e9c468bcaf421d82ec6f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.45385593
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911139007022795249, guid: 4a721f5f2317e9c468bcaf421d82ec6f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.45602933
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911139007022795249, guid: 4a721f5f2317e9c468bcaf421d82ec6f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.5426102
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911139007022795249, guid: 4a721f5f2317e9c468bcaf421d82ec6f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911139007022795249, guid: 4a721f5f2317e9c468bcaf421d82ec6f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 80.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911139007022795249, guid: 4a721f5f2317e9c468bcaf421d82ec6f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90.047
+      objectReference: {fileID: 0}
+    - target: {fileID: 5468686982814939613, guid: 4a721f5f2317e9c468bcaf421d82ec6f, type: 3}
+      propertyPath: goodVoice
+      value: 
+      objectReference: {fileID: 8300000, guid: 6597fd2f6967088429d5a63eb905b09f, type: 3}
+    - target: {fileID: 5468686982814939613, guid: 4a721f5f2317e9c468bcaf421d82ec6f, type: 3}
+      propertyPath: rayOrigin
+      value: 
+      objectReference: {fileID: 411565888}
+    - target: {fileID: 5468686982814939613, guid: 4a721f5f2317e9c468bcaf421d82ec6f, type: 3}
+      propertyPath: cameraGrab
+      value: 
+      objectReference: {fileID: 845679636}
+    - target: {fileID: 5468686982814939613, guid: 4a721f5f2317e9c468bcaf421d82ec6f, type: 3}
+      propertyPath: greatVoice
+      value: 
+      objectReference: {fileID: 8300000, guid: efea08e9619e54d45b3813e6ea7af6c1, type: 3}
+    - target: {fileID: 5468686982814939613, guid: 4a721f5f2317e9c468bcaf421d82ec6f, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 2133464955}
+    - target: {fileID: 5468686982814939613, guid: 4a721f5f2317e9c468bcaf421d82ec6f, type: 3}
+      propertyPath: amazingVoice
+      value: 
+      objectReference: {fileID: 8300000, guid: d99b037d1b115fb4493dddb5bfcbfa84, type: 3}
+    - target: {fileID: 5468686982814939613, guid: 4a721f5f2317e9c468bcaf421d82ec6f, type: 3}
+      propertyPath: photoCounter
+      value: 
+      objectReference: {fileID: 584602684}
+    - target: {fileID: 5468686982814939613, guid: 4a721f5f2317e9c468bcaf421d82ec6f, type: 3}
+      propertyPath: cameraShotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 5633782d300810049923c723d7e62f35, type: 3}
+    - target: {fileID: 6660476879353317144, guid: 4a721f5f2317e9c468bcaf421d82ec6f, type: 3}
+      propertyPath: m_Name
+      value: CameraHolster
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4a721f5f2317e9c468bcaf421d82ec6f, type: 3}
+--- !u!4 &985621430 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1911139007022795249, guid: 4a721f5f2317e9c468bcaf421d82ec6f, type: 3}
+  m_PrefabInstance: {fileID: 985621429}
+  m_PrefabAsset: {fileID: 0}
 --- !u!64 &1000067624
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -18702,6 +18833,7 @@ Transform:
   - {fileID: 875411355}
   - {fileID: 655424227}
   - {fileID: 532002511}
+  - {fileID: 985621430}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1844296122
