@@ -31,6 +31,9 @@ public class Swing : MonoBehaviour
     public float minDistanceMultiplier = 0.5f;
     public float maxDistanceMultiplier = 0.6f;
 
+    public AudioSource audioSource;
+    public AudioClip swingStartSound;
+
     private SpringJoint joint;
     private Vector3 swingPoint;
     private bool hasHit;
@@ -42,6 +45,8 @@ public class Swing : MonoBehaviour
 
     public HandClimbDetector climbDetector;
     public WallClimb wallClimb;
+    public HandCameraDetector cameraDetector;
+    public CameraGrab cameraGrab;
 
     public Vector3 GetCurrentSwingPoint()
     {
@@ -59,10 +64,13 @@ public class Swing : MonoBehaviour
 
         bool nearClimbable = climbDetector != null && climbDetector.IsTouchingClimbable;
         bool currentlyClimbing = wallClimb != null && wallClimb.IsClimbing;
+        bool blockedByCamera =
+            (cameraDetector != null && cameraDetector.IsTouchingCamera) ||
+            (cameraGrab != null && cameraGrab.IsHoldingCamera);
 
         if (swingAction.action.WasPressedThisFrame())
         {
-            if (!nearClimbable && !currentlyClimbing)
+            if (!nearClimbable && !currentlyClimbing && !blockedByCamera)
             {
                 StartSwing();
             }
@@ -90,6 +98,11 @@ public class Swing : MonoBehaviour
     {
         if (!hasHit || joint != null)
             return;
+
+        if (audioSource != null && swingStartSound != null)
+        {
+            audioSource.PlayOneShot(swingStartSound);
+        }
 
         joint = playerRigidbody.gameObject.AddComponent<SpringJoint>();
         joint.autoConfigureConnectedAnchor = false;
@@ -170,6 +183,18 @@ public class Swing : MonoBehaviour
 
     public void GetSwingPoint()
     {
+        bool nearClimbable = climbDetector != null && climbDetector.IsTouchingClimbable;
+
+        if (nearClimbable)
+        {
+            hasHit = false;
+
+            if (predictionPoint != null)
+                predictionPoint.gameObject.SetActive(false);
+
+            return;
+        }
+
         if (joint != null)
         {
             if (predictionPoint != null)
@@ -177,28 +202,31 @@ public class Swing : MonoBehaviour
             return;
         }
 
+        Ray ray = new Ray(startSwingHand.position, startSwingHand.forward);
+
         hasHit = Physics.Raycast(
-            startSwingHand.position,
-            startSwingHand.forward,
+            ray,
             out RaycastHit raycastHit,
             maxDistance,
             swingableLayer
         );
+
+        if (predictionPoint != null)
+            predictionPoint.gameObject.SetActive(true);
 
         if (hasHit)
         {
             swingPoint = raycastHit.point;
 
             if (predictionPoint != null)
-            {
-                predictionPoint.gameObject.SetActive(true);
                 predictionPoint.position = swingPoint;
-            }
         }
         else
         {
+            swingPoint = startSwingHand.position + startSwingHand.forward * maxDistance;
+
             if (predictionPoint != null)
-                predictionPoint.gameObject.SetActive(false);
+                predictionPoint.position = swingPoint;
         }
     }
 

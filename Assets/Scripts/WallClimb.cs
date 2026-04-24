@@ -9,6 +9,9 @@ public class WallClimb : MonoBehaviour
     public HandClimbDetector leftDetector;
     public HandClimbDetector rightDetector;
 
+    public HandCameraDetector rightCameraDetector;
+    public CameraGrab cameraGrab;
+
     public InputActionProperty leftGripAction;
     public InputActionProperty rightGripAction;
 
@@ -38,7 +41,15 @@ public class WallClimb : MonoBehaviour
         bool rightPressed = rightGripAction.action.IsPressed();
 
         bool leftCanClimb = leftDetector != null && leftDetector.IsTouchingClimbable;
-        bool rightCanClimb = rightDetector != null && rightDetector.IsTouchingClimbable;
+
+        bool rightBlockedByCamera =
+            (rightCameraDetector != null && rightCameraDetector.IsTouchingCamera) ||
+            (cameraGrab != null && cameraGrab.IsHoldingCamera);
+
+        bool rightCanClimb =
+            rightDetector != null &&
+            rightDetector.IsTouchingClimbable &&
+            !rightBlockedByCamera;
 
         if (leftPressed && leftCanClimb && activeHand != ClimbHand.Left)
         {
