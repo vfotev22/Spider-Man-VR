@@ -2677,8 +2677,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 617186884}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 8.82988}
-  m_LocalScale: {x: 0.19999997, y: 0.19999999, z: 0.19999997}
+  m_LocalPosition: {x: 0, y: 0, z: 0.421}
+  m_LocalScale: {x: 0.012, y: 0.012, z: 0.012}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 726757698}
@@ -2700,7 +2700,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.4400024, y: -1.1175842}
+  m_AnchoredPosition: {x: -0.251, y: -0.162}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &617186886
@@ -3011,6 +3011,34 @@ PrefabInstance:
       propertyPath: gameStartVoiceLine
       value: 
       objectReference: {fileID: 8300000, guid: 48d0b88e4f4b5e647b80ca2486e0928b, type: 3}
+    - target: {fileID: 5559222787441997955, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.012
+      objectReference: {fileID: 0}
+    - target: {fileID: 5559222787441997955, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.012
+      objectReference: {fileID: 0}
+    - target: {fileID: 5559222787441997955, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.012
+      objectReference: {fileID: 0}
+    - target: {fileID: 5559222787441997955, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.421
+      objectReference: {fileID: 0}
+    - target: {fileID: 5559222787441997955, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.251
+      objectReference: {fileID: 0}
+    - target: {fileID: 5559222787441997955, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.162
+      objectReference: {fileID: 0}
+    - target: {fileID: 6238800870865645861, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6273949765721272594, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
       propertyPath: moveSpeed
       value: 10
@@ -3023,6 +3051,30 @@ PrefabInstance:
       propertyPath: swingStartSound
       value: 
       objectReference: {fileID: 8300000, guid: 7a04bf69866098140a87c0b8ac980919, type: 3}
+    - target: {fileID: 8441658676396523566, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.008
+      objectReference: {fileID: 0}
+    - target: {fileID: 8441658676396523566, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.0001079779
+      objectReference: {fileID: 0}
+    - target: {fileID: 8441658676396523566, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.008
+      objectReference: {fileID: 0}
+    - target: {fileID: 8441658676396523566, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.6476
+      objectReference: {fileID: 0}
+    - target: {fileID: 8441658676396523566, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -44.490486
+      objectReference: {fileID: 0}
+    - target: {fileID: 8441658676396523566, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.04649
+      objectReference: {fileID: 0}
     - target: {fileID: 8508858921771190492, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
       propertyPath: m_IsActive
       value: 1
