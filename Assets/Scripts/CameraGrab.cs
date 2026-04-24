@@ -18,6 +18,7 @@ public class CameraGrab : MonoBehaviour
     private bool isInCameraZone = false;
 
     public bool IsHoldingCamera => heldCamera != null;
+    public GameObject HeldCamera => heldCamera;
 
     void Start()
     {
