@@ -2951,6 +2951,10 @@ PrefabInstance:
       propertyPath: swingStartSound
       value: 
       objectReference: {fileID: 8300000, guid: 7a04bf69866098140a87c0b8ac980919, type: 3}
+    - target: {fileID: 2965708943415146108, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3394682172393270209, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -134.92
