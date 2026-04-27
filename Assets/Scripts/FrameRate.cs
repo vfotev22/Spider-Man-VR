@@ -7,6 +7,12 @@ public class FrameRate : MonoBehaviour
 
     float deltaTime = 0f;
 
+    void Awake()
+    {
+        // Cap FPS to 90
+        Application.targetFrameRate = 90;
+    }
+
     void Update()
     {
         deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
