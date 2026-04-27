@@ -2940,6 +2940,14 @@ PrefabInstance:
         Reel in Toward Web'
       objectReference: {fileID: 0}
     - target: {fileID: 2004049879803378670, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 643501327}
+    - target: {fileID: 2004049879803378670, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
+      propertyPath: predpoint
+      value: 
+      objectReference: {fileID: 1386635370}
+    - target: {fileID: 2004049879803378670, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 1563691407}
@@ -3047,6 +3055,14 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 6917408802147292473, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 643501327}
+    - target: {fileID: 6917408802147292473, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
+      propertyPath: predpoint
+      value: 
+      objectReference: {fileID: 962960773}
     - target: {fileID: 6917408802147292473, guid: fbcad9e092cc45340a371bef3645984e, type: 3}
       propertyPath: audioSource
       value: 

@@ -48,6 +48,8 @@ public class Swing : MonoBehaviour
     public HandCameraDetector cameraDetector;
     public CameraGrab cameraGrab;
 
+    public Transform player;
+
     public Vector3 GetCurrentSwingPoint()
     {
         return swingPoint;
@@ -185,6 +187,12 @@ public class Swing : MonoBehaviour
     {
         bool nearClimbable = climbDetector != null && climbDetector.IsTouchingClimbable;
 
+        float PminDistance = 2f;
+        float PmaxDistance = 100f;
+
+        float PminScale = 0.1f;
+        float PmaxScale = 2.0f;
+
         if (nearClimbable)
         {
             hasHit = false;
@@ -211,8 +219,9 @@ public class Swing : MonoBehaviour
             swingableLayer
         );
 
-        if (predictionPoint != null)
+        if (predictionPoint != null){
             predictionPoint.gameObject.SetActive(true);
+        }
 
         if (hasHit)
         {
@@ -220,6 +229,14 @@ public class Swing : MonoBehaviour
 
             if (predictionPoint != null)
                 predictionPoint.position = swingPoint;
+
+            float distance = Vector3.Distance(player.position, predictionPoint.position);
+
+            float t = Mathf.InverseLerp(PminDistance, PmaxDistance, distance);
+
+            float currentScale = Mathf.Lerp(PminScale, PmaxScale, t);
+
+            predictionPoint.localScale = new Vector3(currentScale, currentScale, currentScale);
         }
         else
         {
@@ -227,6 +244,14 @@ public class Swing : MonoBehaviour
 
             if (predictionPoint != null)
                 predictionPoint.position = swingPoint;
+
+            float distance = Vector3.Distance(player.position, predictionPoint.position);
+
+            float t = Mathf.InverseLerp(PminDistance, PmaxDistance, distance);
+
+            float currentScale = Mathf.Lerp(PminScale, PmaxScale, t);
+
+            predictionPoint.localScale = new Vector3(currentScale, currentScale, currentScale);
         }
     }
 
