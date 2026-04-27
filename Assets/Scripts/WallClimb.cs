@@ -4,12 +4,16 @@ using UnityEngine.InputSystem;
 public class WallClimb : MonoBehaviour
 {
     public Rigidbody playerRb;
+
     public Transform leftHand;
     public Transform rightHand;
+
     public HandClimbDetector leftDetector;
     public HandClimbDetector rightDetector;
 
+    public HandCameraDetector leftCameraDetector;
     public HandCameraDetector rightCameraDetector;
+
     public CameraGrab cameraGrab;
 
     public InputActionProperty leftGripAction;
@@ -30,7 +34,6 @@ public class WallClimb : MonoBehaviour
     }
 
     private ClimbHand activeHand = ClimbHand.None;
-
     private Vector3 previousActiveHandPosition;
 
     public bool IsClimbing => activeHand != ClimbHand.None;
@@ -40,16 +43,31 @@ public class WallClimb : MonoBehaviour
         bool leftPressed = leftGripAction.action.IsPressed();
         bool rightPressed = rightGripAction.action.IsPressed();
 
-        bool leftCanClimb = leftDetector != null && leftDetector.IsTouchingClimbable;
+        bool cameraIsHeld = cameraGrab != null && cameraGrab.IsHoldingCamera;
+
+        bool leftBlockedByCamera =
+            cameraIsHeld ||
+            (leftCameraDetector != null && leftCameraDetector.IsTouchingCamera);
 
         bool rightBlockedByCamera =
-            (rightCameraDetector != null && rightCameraDetector.IsTouchingCamera) ||
-            (cameraGrab != null && cameraGrab.IsHoldingCamera);
+            cameraIsHeld ||
+            (rightCameraDetector != null && rightCameraDetector.IsTouchingCamera);
+
+        bool leftCanClimb =
+            leftDetector != null &&
+            leftDetector.IsTouchingClimbable &&
+            !leftBlockedByCamera;
 
         bool rightCanClimb =
             rightDetector != null &&
             rightDetector.IsTouchingClimbable &&
             !rightBlockedByCamera;
+
+        if (cameraIsHeld)
+        {
+            activeHand = ClimbHand.None;
+            return;
+        }
 
         if (leftPressed && leftCanClimb && activeHand != ClimbHand.Left)
         {
@@ -95,6 +113,14 @@ public class WallClimb : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (cameraGrab != null && cameraGrab.IsHoldingCamera)
+        {
+            activeHand = ClimbHand.None;
+            playerRb.useGravity = true;
+            playerRb.linearDamping = 0f;
+            return;
+        }
+
         if (activeHand == ClimbHand.None)
         {
             playerRb.useGravity = true;
