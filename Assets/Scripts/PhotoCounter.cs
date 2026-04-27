@@ -91,6 +91,9 @@ public class PhotoCounter : MonoBehaviour
         completionRecorded = false;
         finalTimeValue = 0f;
         finalFormattedTime = "";
+
+        CameraRaycast.ResetScore();
+
         UpdateDisplay();
     }
 }

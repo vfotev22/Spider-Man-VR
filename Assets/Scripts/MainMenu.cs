@@ -15,6 +15,7 @@ public class MainMenu : MonoBehaviour
     public Swing leftSwing;
     public Swing rightSwing;
     public WallClimb wallClimb;
+    public PauseMenu pauseMenu;
 
     [Header("UI To Hide While Menu Is Active")]
     public GameObject[] uiToHide;
