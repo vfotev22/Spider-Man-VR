@@ -4,23 +4,29 @@ using System.Collections.Generic;
 
 public class CameraRaycast : MonoBehaviour
 {
+    [Header("References")]
     public PhotoCounter photoCounter;
     public Transform rayOrigin;
-    public InputActionProperty triggerAction;
     public CameraGrab cameraGrab;
 
+    [Header("Input")]
+    public InputActionProperty rightTriggerAction;
+    public InputActionProperty leftTriggerAction;
+
+    [Header("Raycast")]
     public float rayDistance = 100f;
 
+    [Header("Audio")]
     public AudioSource audioSource;
     public AudioClip cameraShotSound;
-
     public AudioClip amazingVoice;
     public AudioClip greatVoice;
     public AudioClip goodVoice;
 
-    public List<string> photoRatings = new List<string>();
-    public List<int> photoScores = new List<int>();
-    public int totalScore = 0;
+    [Header("Shared Score")]
+    public static List<string> photoRatings = new List<string>();
+    public static List<int> photoScores = new List<int>();
+    public static int totalScore = 0;
 
     void Update()
     {
@@ -30,7 +36,8 @@ public class CameraRaycast : MonoBehaviour
         if (cameraGrab.HeldCamera != gameObject)
             return;
 
-        if (triggerAction.action.WasPressedThisFrame())
+        if (rightTriggerAction.action.WasPressedThisFrame() ||
+            leftTriggerAction.action.WasPressedThisFrame())
         {
             ShootRay();
         }
@@ -44,77 +51,76 @@ public class CameraRaycast : MonoBehaviour
         Vector3 direction = rayOrigin.forward;
         Debug.DrawRay(rayOrigin.position, direction * rayDistance, Color.green, 2f);
 
-        if (Physics.Raycast(rayOrigin.position, direction, out RaycastHit hit, rayDistance))
-        {
-            string tag = hit.collider.tag;
-
-            Debug.Log("Hit: " + hit.collider.name);
-
-            if (tag.StartsWith("Amazing") || tag.StartsWith("Great") || tag.StartsWith("Good"))
-            {
-                if (audioSource != null && cameraShotSound != null)
-                    audioSource.PlayOneShot(cameraShotSound);
-
-                char groupNumber = tag[tag.Length - 1];
-
-                string rating = "";
-                int score = 0;
-
-                if (tag.StartsWith("Amazing"))
-                {
-                    rating = "Amazing";
-                    score = 3;
-                    photoCounter.AddPhoto();
-
-                    if (audioSource != null && amazingVoice != null)
-                        audioSource.PlayOneShot(amazingVoice);
-                }
-                else if (tag.StartsWith("Great"))
-                {
-                    rating = "Great";
-                    score = 2;
-                    photoCounter.AddPhoto();
-
-                    if (audioSource != null && greatVoice != null)
-                        audioSource.PlayOneShot(greatVoice);
-                }
-                else if (tag.StartsWith("Good"))
-                {
-                    rating = "Good";
-                    score = 1;
-                    photoCounter.AddPhoto();
-
-                    if (audioSource != null && goodVoice != null)
-                        audioSource.PlayOneShot(goodVoice);
-                }
-
-                photoRatings.Add(rating);
-                photoScores.Add(score);
-                totalScore += score;
-
-                Debug.Log($"[PHOTO STORED] Hit: {tag}");
-                Debug.Log($"[PHOTO STORED] Rating: {rating} | Score: {score}");
-                Debug.Log($"[PHOTO STORED] Group: {groupNumber}");
-                Debug.Log($"[TOTAL SCORE] {totalScore}");
-
-                DestroyScoreGroup(groupNumber);
-            }
-            else
-            {
-                Debug.Log("[PHOTO RESULT] Miss — nothing stored");
-            }
-        }
-        else
+        if (!Physics.Raycast(rayOrigin.position, direction, out RaycastHit hit, rayDistance))
         {
             Debug.Log("[PHOTO RESULT] Miss — nothing stored");
+            return;
         }
+
+        string hitTag = hit.collider.tag;
+        Debug.Log("Hit: " + hit.collider.name + " | Tag: " + hitTag);
+
+        if (!hitTag.StartsWith("Amazing") &&
+            !hitTag.StartsWith("Great") &&
+            !hitTag.StartsWith("Good"))
+        {
+            Debug.Log("[PHOTO RESULT] Miss — nothing stored");
+            return;
+        }
+
+        char groupNumber = hitTag[hitTag.Length - 1];
+
+        string rating = "";
+        int score = 0;
+
+        if (hitTag.StartsWith("Amazing"))
+        {
+            rating = "Amazing";
+            score = 3;
+            PlayVoice(amazingVoice);
+        }
+        else if (hitTag.StartsWith("Great"))
+        {
+            rating = "Great";
+            score = 2;
+            PlayVoice(greatVoice);
+        }
+        else if (hitTag.StartsWith("Good"))
+        {
+            rating = "Good";
+            score = 1;
+            PlayVoice(goodVoice);
+        }
+
+        PlayVoice(cameraShotSound);
+
+        StorePhoto(rating, score);
+        photoCounter.AddPhoto();
+
+        Debug.Log($"[PHOTO STORED] Hit: {hitTag}");
+        Debug.Log($"[PHOTO STORED] Rating: {rating} | Score: {score}");
+        Debug.Log($"[PHOTO STORED] Group: {groupNumber}");
+        Debug.Log($"[TOTAL SCORE] {totalScore}");
+
+        DestroyScoreGroup(groupNumber);
+    }
+
+    void StorePhoto(string rating, int score)
+    {
+        photoRatings.Add(rating);
+        photoScores.Add(score);
+        totalScore += score;
+    }
+
+    void PlayVoice(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+            audioSource.PlayOneShot(clip);
     }
 
     void DestroyScoreGroup(char groupNumber)
     {
         string[] prefixes = { "Amazing", "Great", "Good" };
-
-        Debug.Log($"[DESTROY] Removing score group {groupNumber}");
 
         foreach (string prefix in prefixes)
         {
@@ -124,7 +130,6 @@ public class CameraRaycast : MonoBehaviour
             foreach (GameObject obj in objects)
             {
                 Destroy(obj);
-                Debug.Log($"[DESTROY] Removed {obj.name}");
             }
         }
 
@@ -134,7 +139,13 @@ public class CameraRaycast : MonoBehaviour
         foreach (GameObject marker in markers)
         {
             Destroy(marker);
-            Debug.Log($"[DESTROY] Removed marker {marker.name} with tag {markerTag}");
         }
+    }
+
+    public static void ResetScore()
+    {
+        photoRatings.Clear();
+        photoScores.Clear();
+        totalScore = 0;
     }
 }
