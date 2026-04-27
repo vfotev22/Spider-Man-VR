@@ -4,15 +4,21 @@ using UnityEngine.InputSystem;
 public class CameraGrab : MonoBehaviour
 {
     public Transform rightHand;
+    public Transform leftHand;
+
     public HandCameraDetector rightDetector;
+    public HandCameraDetector leftDetector;
+
     public InputActionProperty rightGripAction;
+    public InputActionProperty leftGripAction;
 
     public Vector3 heldLocalPosition = Vector3.zero;
     public Vector3 heldLocalRotation = Vector3.zero;
 
     private GameObject heldCamera;
     private Rigidbody heldCameraRb;
-    private bool wasGripPressedLastFrame;
+    private bool wasRightGripPressedLastFrame;
+    private bool wasLeftGripPressedLastFrame;
     private Collider[] playerColliders;
     private Collider[] heldCameraColliders;
     private bool isInCameraZone = false;
@@ -28,30 +34,39 @@ public class CameraGrab : MonoBehaviour
     void Update()
     {
         bool rightPressed = rightGripAction.action.IsPressed();
-        bool rightCanGrab = rightDetector != null && rightDetector.IsTouchingCamera;
+        bool leftPressed = leftGripAction.action.IsPressed();
 
-        if (rightPressed && !wasGripPressedLastFrame)
+        bool rightCanGrab = rightDetector != null && rightDetector.IsTouchingCamera;
+        bool leftCanGrab = leftDetector != null && leftDetector.IsTouchingCamera;
+
+        if (!IsHoldingCamera && isInCameraZone)
         {
-            if (!IsHoldingCamera && rightCanGrab && isInCameraZone)
+            if (rightPressed && !wasRightGripPressedLastFrame && rightCanGrab)
             {
-                Grab(rightDetector.CurrentCamera);
+                Grab(rightDetector.CurrentCamera, rightHand);
+            }
+            else if (leftPressed && !wasLeftGripPressedLastFrame && leftCanGrab)
+            {
+                Grab(leftDetector.CurrentCamera, leftHand);
             }
         }
 
-        if (!rightPressed && wasGripPressedLastFrame)
+        if (IsHoldingCamera)
         {
-            if (IsHoldingCamera)
+            if ((!rightPressed && wasRightGripPressedLastFrame) ||
+                (!leftPressed && wasLeftGripPressedLastFrame))
             {
                 Release();
             }
         }
 
-        wasGripPressedLastFrame = rightPressed;
+        wasRightGripPressedLastFrame = rightPressed;
+        wasLeftGripPressedLastFrame = leftPressed;
     }
 
-    private void Grab(Collider cameraCollider)
+    private void Grab(Collider cameraCollider, Transform hand)
     {
-        if (cameraCollider == null)
+        if (cameraCollider == null || hand == null)
             return;
 
         heldCameraRb = cameraCollider.attachedRigidbody;
@@ -81,7 +96,7 @@ public class CameraGrab : MonoBehaviour
             }
         }
 
-        heldCamera.transform.SetParent(rightHand);
+        heldCamera.transform.SetParent(hand);
         heldCamera.transform.localPosition = heldLocalPosition;
         heldCamera.transform.localRotation = Quaternion.Euler(heldLocalRotation);
 
